@@ -16,5 +16,11 @@ public class User {
     private String branch;
     private int year;
     private String mobileNo;
+
+    @Column(unique = true)
     private String email;
+
+    private String password;
+
+    private String role;
 }
