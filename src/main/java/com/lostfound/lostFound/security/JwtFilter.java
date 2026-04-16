@@ -1,6 +1,5 @@
 package com.lostfound.lostFound.security;
 
-import com.lostfound.lostFound.service.CustomUserDetailsService;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +7,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.web.filter.OncePerRequestFilter;
+
+import com.lostfound.lostFound.service.CustomUserDetailsService;
 
 import org.springframework.stereotype.Component;
 

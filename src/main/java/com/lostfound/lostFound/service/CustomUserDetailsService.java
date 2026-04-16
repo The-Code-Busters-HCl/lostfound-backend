@@ -1,28 +1,14 @@
 package com.lostfound.lostFound.service;
 
-import com.lostfound.lostFound.model.User;
-import com.lostfound.lostFound.repository.UserRepo;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.*;
-import org.springframework.stereotype.Service;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
-import java.util.Collections;
+import com.lostfound.lostFound.dto.UserDto;
 
-@Service
-public class CustomUserDetailsService implements UserDetailsService {
+public interface CustomUserDetailsService extends UserDetailsService {
+    UserDetails loadUserByUsername(String email);
 
-    @Autowired
-    private UserRepo userRepo;
+    UserDto loadUserByUserId(Long id);
 
-    @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        User user = userRepo.findByEmail(email)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
-        return new org.springframework.security.core.userdetails.User(
-                user.getEmail(),
-                user.getPassword(),
-                Collections.emptyList()
-        );
-    }
 }
